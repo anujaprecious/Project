@@ -1,9 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+
+// const SideMenu = () => {
+//     const [menuItems, setMenuItems] = useState([]);
+//     useEffect(() => {
+//         axios
+//             .get('https://nifty-kare-32d12b.netlify.app/treemenu.json')
+//             .then((response) => {
+//                 setMenuItems(response.data);
+//             })
+//             .catch((error) => {
+//                 console.error('Error fetching menu data:', error);
+//             });
+//     }, []);
 
 const SideMenu = () => {
     const [menuItems, setMenuItems] = useState([]);
-    useEffect(() => {
+
+    const fetchMenuItems = () => {
         axios
             .get('https://nifty-kare-32d12b.netlify.app/treemenu.json')
             .then((response) => {
@@ -12,9 +26,10 @@ const SideMenu = () => {
             .catch((error) => {
                 console.error('Error fetching menu data:', error);
             });
-    }, []);
+    };
 
-
+    // Call the fetchMenuItems function directly
+    fetchMenuItems();
 
     const renderMenuItems = (items) => {
         return (
